@@ -7,6 +7,11 @@ app.get('/', (req, res) => {
   res.send('Hello from Koyeb!');
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+server.on('error', (err) => {
+  console.error('Server error:', err);
+  process.exit(1);
 });
